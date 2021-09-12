@@ -3,7 +3,6 @@ import { FlatList, Image,  Text, TouchableOpacity, View } from 'react-native'
 import tw from "tailwind-react-native-classnames"; 
 import {Icon} from "react-native-elements"; 
 import { useNavigation, useNavigationContainerRef } from '@react-navigation/native';
-import { selectOrigin } from '../slices/navSlice';
 const data = [
     {
         id: "123" , 
@@ -22,7 +21,7 @@ const data = [
 
 ]; 
 const NavOptions = () => {
-    const origin  = useSelector(selectOrigin); 
+
     const navigation = useNavigation(); 
     return (
         <FlatList
@@ -33,8 +32,8 @@ const NavOptions = () => {
                 <TouchableOpacity 
                 onPress = {() => navigation.navigate(item.screen)}
                 style = {tw`p-2 `}>
-                disabled = {!origin}        
-                    <View style = {tw`${!origin && "opacity-20"}`}>
+                    
+                    <View>
                         <Image
                             style = {{width: 100, height:100, resizeMode: "contain"}} 
                             // resizeMode keeps the aspect ratio

@@ -8,7 +8,6 @@ import MapScreen from './screens/MapScreen';
 import "react-native-gesture-handler"; 
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import 'react-native-gesture-handler';
 
 
 // import AudioPlayer from "./Components/AudioPlayer";
@@ -32,14 +31,9 @@ export default function App() {
             options = {{
               headerShown: false, 
             }}
-            />  
-           
-            
-            
+            /> 
           </Stack.Navigator>
       </NavigationContainer>
-       
-
     </Provider> 
 
 );
