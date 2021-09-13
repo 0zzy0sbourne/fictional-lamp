@@ -5,7 +5,6 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import store from './store';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
-import "react-native-gesture-handler"; 
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 

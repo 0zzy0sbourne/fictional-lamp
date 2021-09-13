@@ -1,11 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { selectDestination } from '../slices/navSlice'
 
 const RideOptionsCard = () => {
     return (
         <View>
-            <Text></Text>
+            <Text>Pick a ride</Text>
+            
+           
+        
+        
+        
         </View>
+        
     )
 }
 
