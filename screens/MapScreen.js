@@ -6,6 +6,7 @@ import MapView from "react-native-maps";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NavigateCard from '../Components/NavigateCard';
 import RideOptionsCard from '../Components/RideOptionsCard';
+import FavouritePlaces from '../Components/FavouritePlaces';
 const MapScreen = () => {
     const Stack = createNativeStackNavigator(); 
     return (
@@ -35,6 +36,7 @@ const MapScreen = () => {
                         
 
             </View>
+
         </View>
     )
 }
