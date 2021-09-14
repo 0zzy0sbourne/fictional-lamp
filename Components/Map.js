@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import MapView from "react-native-maps"; 
 import tw from "tailwind-react-native-classnames"; 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import { selectOrigin, selectDestination } from '../slices/navSlice';
 import { Marker } from 'react-native-maps';
 import MapViewDirections from "react-native-maps-directions"; 
@@ -13,7 +13,7 @@ const Map = () => {
     // this hook takes a selector function as an argument
     const origin = useSelector(selectOrigin); // it is an object (returns null and it causes to error rn )
     const destination = useSelector(selectDestination); 
-    
+    const dispatch = useDispatch(); 
     const mapRef = useRef(origin); 
     
     useEffect(() => {
@@ -24,7 +24,19 @@ const Map = () => {
     
 
     useEffect(() => {
+        if(!origin || !destination) return; 
+        
+        const getPlaces = async() => { 
+            // type is given as static data, but it should be taken from the user ! ( change it later )
+            fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destination.location.lat},${destination.location.lng}&sensor=true&key=${GOOGLE_MAPS_APIKEY}&radius=50000&types=atm`
+            ).then((res) => res.json())
+            .then(data => {
+                console.log(data); 
 
+            })
+        };  
+
+        getPlaces(); 
     }, [origin, destination, GOOGLE_MAPS_APIKEY]) 
 
     return (
