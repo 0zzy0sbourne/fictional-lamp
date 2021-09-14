@@ -25,7 +25,7 @@ const FavouritePlaces = () => {
   
     return (
         
-        <View style={{padding: 30, flex:1}}>
+        <View style={tw`pt-20`}>
             <GooglePlacesAutocomplete 
                 placeholder = "Choose your fav places"
                 styles = {{
@@ -55,15 +55,26 @@ const FavouritePlaces = () => {
                     nearbyPlacesAPI = "GooglePlacesSearch"
                     debounce = {400}
             /> 
-            <Button 
-            title="Add"
-            onPress = {(fav) => {
-                setFavPlace(
-                    Places.push(fav)
-                )
-            }}
-            style={{height:40,backgroundColor:'white'}}
-            />
+                <TouchableOpacity  
+                title="Add"
+                style = {tw`p-2`}
+                onPress = {(fav) => {
+                    setFavPlace(
+                        Places.push(fav)
+                    )
+                }}
+                >
+                    <View
+                        style = {tw`bg-black items-center h-10 px-3 py-1 rounded-full`}
+                    >
+                        <Text style = {tw`mt-1 text-white `}>
+                            ADD
+                        </Text>                            
+                    </View>
+                </TouchableOpacity>
+
+            
+       
             <FlatList 
             />
         </View>
