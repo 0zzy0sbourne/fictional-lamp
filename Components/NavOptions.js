@@ -9,8 +9,8 @@ import {TRAVEL_ICON1} from "@env";
 const data = [
     {
         id: "123" , 
-        // image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_537/v1568070443/assets/82/6bf372-6016-492d-b20d-d81878a14752/original/Black.png",
-        image: {TRAVEL_ICON1}, 
+        image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_537/v1568070443/assets/82/6bf372-6016-492d-b20d-d81878a14752/original/Black.png",
+        // image: {TRAVEL_ICON1}, 
         title: "Let's Go !", 
         screen: "MapScreen", 
 

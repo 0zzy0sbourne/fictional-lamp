@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import tw from "tailwind-react-native-classnames";
@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import {GOOGLE_MAPS_APIKEY} from "@env"; 
 import { useNavigation } from '@react-navigation/core';
 import { setDestination, setOrigin } from '../slices/navSlice';
+import {Icon} from "react-native-elements"; 
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation(); 
@@ -55,8 +56,20 @@ const NavigateCard = () => {
                     />
                 </View>
             </View>
-
-
+            
+            <View
+                style = {tw`flex flex-row bg-gray-100 justify-evenly py-2 border-t mt-auto border-gray-100`}
+            >
+                <TouchableOpacity 
+                onPress = {() => navigation.navigate("RideOptionsCard")}
+                style = {tw`flex flex-row  justify-between    bg-black w-32 py-4 px-3 rounded-full    `}>
+                                <Icon style={tw`m-auto`} name='taxi'  type='font-awesome'  color='#f50' />
+                                <Text style = {tw`text-white  px-3 `}>
+                                    Search Services
+                                </Text>                            
+                        
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>    
     )
 }

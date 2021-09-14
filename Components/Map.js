@@ -21,7 +21,12 @@ const Map = () => {
         // Zoom and fit to markers 
         mapRef.current.fitToSuppliedMarkers(['origin', 'destination'])
     }, [origin, destination])
-     
+    
+
+    useEffect(() => {
+
+    }, [origin, destination, GOOGLE_MAPS_APIKEY]) 
+
     return (
           <MapView
                 ref = {mapRef}
