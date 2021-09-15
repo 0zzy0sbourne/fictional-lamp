@@ -19,9 +19,15 @@ const Map = () => {
     
     useEffect(() => {
         if(!origin || !destination) return; 
-        // Zoom and fit to markers 
+        // Zoom and fit to markers of origin and destination ( zooms out to show the road form origin to destination) 
         mapRef.current.fitToSuppliedMarkers(['origin', 'destination'])
     }, [origin, destination])
+
+    useEffect(() => {
+        if(!services) return; 
+        // Zoom in and fit to markers of services 
+        mapRef.current.fitToSuppliedMarkers(['services', 'destination'])
+    }, [services, destination])
     
 
     useEffect(() => {
@@ -29,7 +35,8 @@ const Map = () => {
         
         const getPlaces = async() => { 
             // type is given as static data, but it should be taken from the user ! ( change it later )
-            fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destination.location.lat},${destination.location.lng}&sensor=true&key=${GOOGLE_MAPS_APIKEY}&radius=50000&types=atm`
+            // radius is in meters 
+            fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destination.location.lat},${destination.location.lng}&sensor=true&key=${GOOGLE_MAPS_APIKEY}&radius=500&types=atm`
             ).then((res) => res.json())
             .then(data => {
                 // console.log(data); 
@@ -90,18 +97,20 @@ const Map = () => {
                     />  
                  
                 )} 
-                {services?.name && (
-                    <Marker
-                        coordinate = {{
-                                latitude: services.geometry.location.lat,
-                                longitude: services.geometry.location.lng,  
-                        }}
-                        title= "Services"
-                        description={services.name}
-                        identifier="services"
+                {services && ( // if there is a servicei this should be working
+                    // map the array to markers
+                    services.map((service) => (
+                        <Marker
+                            coordinate = {{
+                                    latitude: service.geometry.location.lat,
+                                    longitude: service.geometry.location.lng,  
+                            }}
+                            title= "Services"
+                            description={service.name}
+                            identifier="services"
 
-                    />  
-                 
+                        />
+                    ))
                 )}
                 
 
@@ -114,3 +123,18 @@ const Map = () => {
 export default Map
 
 const styles = StyleSheet.create({})
+
+
+/* old single Marker usage 
+<Marker
+                        coordinate = {{
+                                latitude: services[0].geometry.location.lat,
+                                longitude: services[0].geometry.location.lng,  
+                        }}
+                        title= "Services"
+                        description={services.name}
+                        identifier="services"
+
+                    />   
+
+*/ 
