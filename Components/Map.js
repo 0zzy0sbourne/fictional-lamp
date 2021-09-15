@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View} from 'react-native'
 import MapView from "react-native-maps"; 
 import tw from "tailwind-react-native-classnames"; 
 import { useSelector, useDispatch} from 'react-redux';
-import { selectOrigin, selectDestination } from '../slices/navSlice';
+import { selectOrigin, selectDestination, selectServices, setServices } from '../slices/navSlice';
 import { Marker } from 'react-native-maps';
 import MapViewDirections from "react-native-maps-directions"; 
 import {GOOGLE_MAPS_APIKEY} from "@env"; 
@@ -15,6 +15,7 @@ const Map = () => {
     const destination = useSelector(selectDestination); 
     const dispatch = useDispatch(); 
     const mapRef = useRef(origin); 
+    const services = useSelector(selectServices); 
     
     useEffect(() => {
         if(!origin || !destination) return; 
@@ -31,8 +32,8 @@ const Map = () => {
             fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${destination.location.lat},${destination.location.lng}&sensor=true&key=${GOOGLE_MAPS_APIKEY}&radius=50000&types=atm`
             ).then((res) => res.json())
             .then(data => {
-                console.log(data); 
-
+                // console.log(data); 
+                dispatch(setServices(data.results)); 
             })
         };  
 
@@ -63,32 +64,45 @@ const Map = () => {
                         strokeColor="blue"                
                 />                 
             )}
-            {origin?.location && (
-                <Marker
-                    coordinate = {{
-                            latitude: origin.location.lat,
-                            longitude: origin.location.lng,  
-                    }}
-                    title= "Origin"
-                    description={origin.description}
-                    identifier="origin"
+                {origin?.location && (
+                    <Marker
+                        coordinate = {{
+                                latitude: origin.location.lat,
+                                longitude: origin.location.lng,  
+                        }}
+                        title= "Origin"
+                        description={origin.description}
+                        identifier="origin"
 
-                />  
+                    />  
                  
-            )}  
+                )}  
                 {destination?.location && (
-                <Marker
-                    coordinate = {{
-                            latitude: destination.location.lat,
-                            longitude: destination.location.lng,  
-                    }}
-                    title= "Destination"
-                    description={destination.description}
-                    identifier="destination"
+                    <Marker
+                        coordinate = {{
+                                latitude: destination.location.lat,
+                                longitude: destination.location.lng,  
+                        }}
+                        title= "Destination"
+                        description={destination.description}
+                        identifier="destination"
 
-                />  
+                    />  
                  
-            )} 
+                )} 
+                {services?.name && (
+                    <Marker
+                        coordinate = {{
+                                latitude: services.geometry.location.lat,
+                                longitude: services.geometry.location.lng,  
+                        }}
+                        title= "Services"
+                        description={services.name}
+                        identifier="services"
+
+                    />  
+                 
+                )}
                 
 
              </MapView>
