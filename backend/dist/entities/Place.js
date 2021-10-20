@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Author = void 0;
+exports.Place = void 0;
 const core_1 = require("@mikro-orm/core");
-let Author = class Author {
+let Place = class Place {
     constructor() {
         this.createdAt = new Date();
         this.updatedAt = new Date();
@@ -20,21 +20,21 @@ let Author = class Author {
 __decorate([
     (0, core_1.PrimaryKey)(),
     __metadata("design:type", Number)
-], Author.prototype, "_id", void 0);
+], Place.prototype, "_id", void 0);
 __decorate([
     (0, core_1.Property)(),
     __metadata("design:type", Date)
-], Author.prototype, "createdAt", void 0);
+], Place.prototype, "createdAt", void 0);
 __decorate([
     (0, core_1.Property)({ onUpdate: () => new Date() }),
     __metadata("design:type", Date)
-], Author.prototype, "updatedAt", void 0);
+], Place.prototype, "updatedAt", void 0);
 __decorate([
     (0, core_1.Property)(),
     __metadata("design:type", String)
-], Author.prototype, "title", void 0);
-Author = __decorate([
+], Place.prototype, "title", void 0);
+Place = __decorate([
     (0, core_1.Entity)()
-], Author);
-exports.Author = Author;
+], Place);
+exports.Place = Place;
 //# sourceMappingURL=Place.js.map
