@@ -15,7 +15,9 @@ function FavoritesList() {
     const navigation = useNavigation();
     return (
         <SafeAreaView>
-
+            <Text>
+                My Favorite Places
+            </Text>
         </SafeAreaView>
     )
 }

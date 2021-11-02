@@ -8,6 +8,7 @@ import {GOOGLE_MAPS_APIKEY} from "@env";
 import { useNavigation } from '@react-navigation/core';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import {Icon} from "react-native-elements"; 
+import FavoritesList from './FavoritesList';
 const NavigateCard = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation(); 
@@ -55,6 +56,14 @@ const NavigateCard = () => {
                         debounce =  {400}
                     />
                 </View>
+                <TouchableOpacity 
+                onPress = {() => navigation.navigate("FavoritesList")}
+                style = {tw`flex flex-row  justify-between bg-green-400 w-32 py-1 px-1 rounded-full    `}>
+                                <Text style = {tw`text-white  px-3 `}>
+                                    My Favorites
+                                </Text>                            
+                        
+                </TouchableOpacity>
             </View>
             
             <View
