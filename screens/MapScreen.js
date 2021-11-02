@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NavigateCard from '../Components/NavigateCard';
 import RideOptionsCard from '../Components/RideOptionsCard';
 import FavouritePlaces from '../Components/FavouritePlaces';
+import FavoritesList from '../Components/FavoritesList';
 const MapScreen = () => {
     const Stack = createNativeStackNavigator(); 
     return (
@@ -24,14 +25,22 @@ const MapScreen = () => {
                         options = {{
                         headerShown: false, 
                         }}
-                        />
+                    />
+                    <Stack.Screen 
+                        name = "FavoritesList"  
+                        component = {FavoritesList}
+                        options = {{
+                        headerShown: false, 
+                        }}
+                    />
+                    
                     <Stack.Screen 
                         name = "RideOptionsCard"  
                         component = {RideOptionsCard}
                         options = {{
                         headerShown: false, 
                         }}
-                        />
+                    />
                 </Stack.Navigator>                  
                         
 
