@@ -65,7 +65,7 @@ const FavouritePlaces = () => {
                 }}
                 >
                     <View
-                        style = {tw`bg-black items-center h-10 px-3 py-1 rounded-full`}
+                        style = {tw`bg-green-400 items-center h-10 px-3 py-1 rounded-full`}
                     >
                         <Text style = {tw`mt-1 text-white `}>
                             ADD

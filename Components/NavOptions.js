@@ -9,8 +9,10 @@ import {TRAVEL_ICON1} from "@env";
 const data = [
     {
         id: "123" , 
-        image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_537/v1568070443/assets/82/6bf372-6016-492d-b20d-d81878a14752/original/Black.png",
-        // image: {TRAVEL_ICON1}, 
+        // image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_537/v1568070443/assets/82/6bf372-6016-492d-b20d-d81878a14752/original/Black.png",
+        // image: {TRAVEL_ICON1},
+        // image: "https://cdn1.iconfinder.com/data/icons/space-flat-galaxy-radio/512/laser_gun-512.png",  
+        image: "https://cdn2.iconfinder.com/data/icons/scenarium-vol-3-1/128/036_backpack_bag_camping_travel_school_rucksack-128.png",
         title: "Let's Go !", 
         screen: "MapScreen", 
 

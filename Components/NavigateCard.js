@@ -62,7 +62,7 @@ const NavigateCard = () => {
             >
                 <TouchableOpacity 
                 onPress = {() => navigation.navigate("RideOptionsCard")}
-                style = {tw`flex flex-row  justify-between    bg-black w-32 py-4 px-3 rounded-full    `}>
+                style = {tw`flex flex-row  justify-between bg-green-400 w-32 py-4 px-3 rounded-full    `}>
                                 <Icon style={tw`m-auto`} name='taxi'  type='font-awesome'  color='#f50' />
                                 <Text style = {tw`text-white  px-3 `}>
                                     Search Services
