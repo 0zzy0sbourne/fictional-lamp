@@ -22,7 +22,9 @@ const main = async () => {
 
         })
     })
-    
+
+    // create a graphql endpoint on express
+    apolloServer.applyMiddleware({app}); 
 }; 
     
 main().catch(err=>{

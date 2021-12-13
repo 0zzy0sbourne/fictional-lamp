@@ -19,6 +19,7 @@ const main = async () => {
             validate: false,
         })
     });
+    apolloServer.applyMiddleware({ app });
 };
 main().catch(err => {
     console.error(err);
